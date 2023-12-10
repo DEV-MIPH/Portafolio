@@ -1,0 +1,24 @@
+from django.urls import path
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth.views import LoginView, LogoutView
+
+urlpatterns = [
+    path('', views.inicio, name=''),
+    path('login', views.login, name='login'),
+    path('registro', views.registro, name='registro'),
+    path('nosotros', views.nosotros, name='nosotros'),
+    path('contacto', views.contacto, name='contacto'),
+    path('registro_usuario/', views.registro_usuario, name='registro_usuario'),
+    path('iniciar_sesion/', views.iniciar_sesion, name='iniciar_sesion'),
+    path('cerrar_sesion/', LogoutView.as_view(template_name='venta/soyadmin.html'), name='cerrar_sesion'),
+    path('productos/', views.productos, name='productos'),
+    path('iniciar_sesion_admin/', LoginView.as_view(template_name='venta/soyadmin.html'), name='iniciar_sesion_admin'),
+    path('agregar_productos/', views.agregar_productos, name='agregar_productos'),
+    path('agregar_al_carro/<int:producto_id>/', views.agregar_al_carro, name='agregar_al_carro'),
+    path('ver_carrito/', views.ver_carrito, name='ver_carrito'),
+    path('modificar_cantidad_carro/<int:compra_id>/', views.modificar_cantidad_carro, name='modificar_cantidad_carro'),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

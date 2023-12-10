@@ -1,0 +1,186 @@
+{% load static %}
+{% load humanize %} 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamer's Heaven</title>
+  <link rel="shortcut icon" href='{% static "images/Gamers_black.png" %}'>
+  <link type='text/css' rel="stylesheet" href='{% static "css/style.css" %}'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <!--links  bootstrap  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--  navbar superior -->
+  <div class="top-navbar">            
+    <img class="mx-auto d-block" src='{% static "/images/Gamers_white.png" %}' width="190" alt="icono">
+    <div class="icons">
+      <a href="{% url 'login' %}"><img src='{% static "/images/register.png" %}' alt="" width="18">Ingresar</a>
+      <a href="{% url 'registro'%}"><img src='{% static "/images/register.png" %}' alt="" width="18">Registrarse</a>
+
+
+    </div>
+  </div>
+
+
+  <!--menu  navbar -->
+  <nav class="navbar navbar-expand-lg" id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url '' %}" id="logo"><img src='{% static "./images/Heaven_claro.png" %}' alt="icono"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span><img src='{% static "images/register.png" %}' alt="menu_image" width="30"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url '' %}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'productos' %}">Productos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Categorias
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(67 0 86);">
+              <li><a class="dropdown-item" href="categoria_smarthphone.html">Smartphones</a></li>
+              <li><a class="dropdown-item" href="#">Sillas Gamer</a></li>
+              <li><a class="dropdown-item" href="#">Perifericos</a></li>
+              <li><a class="dropdown-item" href="#">Audifonos</a></li>
+              <li><a class="dropdown-item" href="#">Teclados</a></li>
+              <li><a class="dropdown-item" href="#">Monitores Gamer</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+          </li>
+        </ul>
+        <span>Bienvenido, {{ usuario.nombre }}</span>
+        
+        {% if user.is_authenticated %}
+        <a href="{% url 'ver_carrito' %}" class="nav-link"><i class="fas fa-shopping-cart"></i> <span class="badge bg-primary">{{ user.carrito.cantidad_total }}</span></a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  
+    
+    <!--menu  navbar -->
+    <div class="imagen_fondo">
+        <h1 class="titulo_imagen">Todos los productos gaming </h1>
+        <p></p>
+    </div>
+    <!--ITEMS -->
+    <div class="container" id="product-cards">
+      <div class="row justify-content-center" style="margin-top: 30px;">
+        {% for producto in productos %}
+        <div class="col-md-3 py-3">
+          <div class="card text-center">
+            <img src="{{ producto.imagen.url }}" alt="" class="card-img-top img-fluid">
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
+              <h2 class="card-price">${{ producto.precio|floatformat:0|intcomma }}</h2>
+              <a href="{% url 'agregar_al_carro' producto_id=producto.id_producto %}" class="btn boton-compra">Agregar al carrito</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    
+    
+    
+    
+  
+  
+    
+  
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container align-content-center">
+          <div class="row">
+  
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Gamers Heaven</h3>
+              <p>
+                Duoc Viña del Mar <br>
+                Valparaiso,Chile <br>
+              </p>
+              <strong>Numero:</strong> +56956590446 <br>
+              <strong>Correo Electronico: </strong>gamersheaven.cl@gmail.com<br>
+            </div>
+  
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Links Acortadores</h4>
+              <ul>
+                <li><a href="{% url ''%}">Inicio</a></li>
+                <li><a href="{% url 'nosotros'%}">Nosotros</a></li>
+                <li><a href="{% url 'productos'%}">Productos</a></li>
+                <li><a href="#">Terminos de Servicio</a></li>
+                <li><a href="#">Politicas </a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Redes sociales</h4>
+              <div class="socail-links mt-3">
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-skype"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-links">
+              <img class="mx-auto d-block" src='{% static "images/Gamers_black.png" %}' width="190" alt="icono">
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+  
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    
+  
+  </body>
+  
+  </html>
+      
+
+
+
+
+
+
+
+
+
+    <a href="#" class="arrow"><i><img src="./images/arrow.png" alt=""></i></a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
