@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">  
+  <ion-toolbar>               
+    <ion-title style="text-align:center"><h3 style="color:aliceblue">La Cocinilla</h3></ion-title>                       
+  </ion-toolbar>                     
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Nueva Contraseña</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-title size="large" style="color: #12283b; text-align: center;">Nueva Contraseña</ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-label position="floating">Nueva contraseña</ion-label>
+        <ion-input type="text" [(ngModel)]="nuevaContrasena"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Repetir contraseña</ion-label>
+        <ion-input type="text" [(ngModel)]="confirmarContrasena"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="restaurarContrasena()">Enviar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>  
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar>
+    <ion-label style="color: aliceblue;"><h4>  &copy; 2023 TODOS LOS DERECHOS
+      <br> 
+      RESERVADOS</h4></ion-label>
+  </ion-toolbar>
+</ion-footer>

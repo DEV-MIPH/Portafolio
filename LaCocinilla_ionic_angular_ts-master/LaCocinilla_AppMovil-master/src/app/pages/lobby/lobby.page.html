@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">  
+  <ion-toolbar>
+    
+        <ion-title><h3 style="color:aliceblue; text-align: center;">La Cocinilla</h3></ion-title>
+        
+          <ion-label slot="end" >
+            <a (click)="cerrarSesion()" style="color: aliceblue;;">
+             <ion-icon size="large" name="log-out-outline"></ion-icon>
+            </a>
+          </ion-label>
+                                    
+  </ion-toolbar>              
+</ion-header>
+
+
+
+<ion-toolbar class="tol">
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="api">
+      <ion-icon name="document-text-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="misrecetas">
+      <ion-icon name="pizza-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="favoritos">
+      <ion-icon name="star-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+<ion-content>
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar>
+    <ion-label style="color: aliceblue;"><h4>  &copy; 2023 TODOS LOS DERECHOS
+      <br> 
+      RESERVADOS</h4></ion-label>    
+  </ion-toolbar>
+</ion-footer>

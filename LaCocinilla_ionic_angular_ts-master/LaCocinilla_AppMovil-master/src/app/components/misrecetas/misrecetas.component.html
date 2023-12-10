@@ -1,0 +1,137 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="border: solid #7FA178;">
+    <ion-card-content>
+      <ion-title style="color: #12283b; text-align: center;">Mis Recetas</ion-title>       
+      
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of recetas">
+          
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="../../../assets/icon/pot.svg">
+            </ion-avatar>
+    
+            <ion-label>
+              <a style="text-align: left; color: #12283b;" (click)="setOpen(true);recetaSeleccionada(item)"> {{ item.nombre }}</a>
+              <!-- word-wrap para los cortes entre palabras  white-space para que aparezca todo el texto en varias lineas y no se corte-->
+              <h3 style="word-wrap: break-word; white-space: normal; text-align: left;"> {{ item.categoria }}</h3>            
+            </ion-label>
+  
+            <ion-modal [isOpen]="isModalOpen ">
+              <ng-template>
+                <ion-header>
+                  <ion-toolbar >                  
+                    <ion-buttons slot="end">
+                      <ion-button (click)="setOpen(false);" style="color:aliceblue;">
+                        <ion-icon size="large" name="return-down-back-outline"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-content>
+                <ion-card style="border: #7FA178 solid;">
+                  <ion-card-header>
+                    <ion-grid>
+                      <ion-row>   
+                        <ion-col>
+                          <ion-avatar item-start>
+                            <img src="../../../assets/icon/pot.svg" class="imagen-receta">
+                          </ion-avatar>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                      <ion-card-title style="text-align: center;">{{ RecetaElegida?.nombre }}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content class="ion-padding">                                                                                                                        
+                            <ion-grid>
+                              <ion-row>
+                                  <ion-col>
+                                      <h3 style="text-align: center;"><strong>Categoria: </strong>{{RecetaElegida?.categoria}}</h3>
+                                  </ion-col>                                                           
+                              </ion-row>
+  
+                              <ion-row>
+                                <ion-col>
+                                    <h3 style="text-align: center;"><strong>Descripción: </strong></h3>                                                                
+                                </ion-col>
+                              </ion-row>
+                              <ion-row>   
+                                <ion-col>
+                                    <p style="text-align: justify; word-wrap: break-word; white-space: normal;">{{RecetaElegida?.descripcion}}</p>
+                                </ion-col>
+                              </ion-row>
+  
+                              <ion-row>
+                                  <ion-col>
+                                      <h3 style="text-align: center;"><strong>Ingredientes: </strong></h3>                                                                
+                                  </ion-col>
+                              </ion-row>
+                              <ion-row>   
+                                  <ion-col>
+                                      <p style="text-align: justify; word-wrap: break-word; white-space: normal;">{{RecetaElegida?.ingredientes}}</p>
+                                  </ion-col>
+                              </ion-row>
+                              <ion-row>
+                                  <ion-col>
+                                      <h3 style="text-align: center;"><strong>Preparación: </strong></h3>
+                                  </ion-col>
+                              </ion-row>
+                              <ion-row>   
+                                  <ion-col>
+                                      <p style="text-align: justify; word-wrap: break-word; white-space: normal;">{{RecetaElegida?.preparacion}}</p>
+                                  </ion-col>
+                              </ion-row>                            
+                              <ion-row>
+                                <ion-col>  
+                                  <a (click)="compartir(RecetaElegida)">
+                                    <ion-icon style="color:#6d7792;" size="large" name="share-outline" class="imagen-receta"></ion-icon>
+                                  </a>
+                                </ion-col> 
+                            </ion-row>                         
+  
+                          </ion-grid>                                                                                                                                                                                                                                                  
+  
+                      </ion-card-content>
+                  </ion-card>
+                  </ion-content>
+              </ng-template>
+            </ion-modal>
+  
+    
+          </ion-item>               
+          
+          <ion-item-options side="end">
+            <ion-item-option (click)="agregarFavorito(item)" style="background: #315fdd;" *ngIf="item.favorito === 0">
+              <ion-icon name="star-outline"></ion-icon>
+            </ion-item-option>
+            <ion-item-option (click)="agregarFavorito(item)" style="background: #a1a078;" *ngIf="item.favorito === 1">
+              <ion-icon name="star"></ion-icon>
+            </ion-item-option>
+            <ion-item-option (click)="editar(item)" style="background: #7FA178;">
+              <ion-icon size="large" name="create" ></ion-icon>
+            </ion-item-option>
+            <ion-item-option (click)="eliminar(item)" style="background: #9e0a12;">
+              <ion-icon size="large" name="trash"></ion-icon> 
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>       
+    </ion-card-content>
+  </ion-card>
+  
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/mis-recetas']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button [routerLink]="['/not-found']">
+      <ion-icon size="large" name="alert-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

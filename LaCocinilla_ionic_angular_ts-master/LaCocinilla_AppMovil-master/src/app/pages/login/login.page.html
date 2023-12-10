@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>               
+    <ion-title style="text-align:center"><h3 style="color:aliceblue">La Cocinilla</h3></ion-title>                       
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="border: solid #7FA178;">           
+    <ion-card-content class="inicio">
+      <lottie-player slot="end" autoplay loop src="https://lottie.host/ca1f1007-9b53-471e-a8e8-eabd42eab30c/k2xKm9XAft.json">
+      </lottie-player>
+      <ion-card-title size="large" style="color: #12283b;">Inicio de Sesión</ion-card-title>     
+      <ion-item>
+        <ion-label position="floating" counter="true">Usuario</ion-label>
+        <ion-input type="text" minlength="4" [(ngModel)]="usuario.usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" counter="true">Password</ion-label>
+        <ion-input type="password" minlength="4" [(ngModel)]="usuario.contrasena"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <a (click)="olvidar()" position="floating" style="color: #12283b;">restablecer contraseña</a>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="ingresar()">Ingresar</ion-button>
+        </ion-col>
+      </ion-row>
+
+        
+    
+    </ion-card-content>
+  </ion-card>    
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar>
+    <ion-label style="color: aliceblue;"><h4>  &copy; 2023 TODOS LOS DERECHOS
+      <br> 
+      RESERVADOS</h4></ion-label>
+  </ion-toolbar>
+</ion-footer>

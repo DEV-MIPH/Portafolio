@@ -1,0 +1,7 @@
+{
+  "name": "LaCocinilla_AppMovil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

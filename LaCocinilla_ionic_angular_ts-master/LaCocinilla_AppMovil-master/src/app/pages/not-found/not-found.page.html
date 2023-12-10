@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="color: aliceblue;">OOPS!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="border: solid #7FA178;">
+    <ion-car-header>
+      <h1>Error 404.</h1>
+    </ion-car-header>
+    <ion-card-content>
+      <p>Lo sentimos, esta pagina no se encuentra disponile. Porfavor volver al inicio.</p>
+      <lottie-player slot="end" autoplay loop src="https://lottie.host/ca1c7413-df57-48a2-9495-4e8481985b52/gl2rLq4YjY.json">
+      </lottie-player>
+      
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" (click)="cerrarSesion()">Volver al inicio</ion-button>
+    </ion-col>
+  </ion-row>  
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar>
+    <ion-label style="color: aliceblue;"><h4>  &copy; 2023 TODOS LOS DERECHOS
+      <br> 
+      RESERVADOS</h4></ion-label>
+  </ion-toolbar>
+</ion-footer>
