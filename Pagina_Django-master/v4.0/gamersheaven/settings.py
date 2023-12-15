@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s15060xt6kah&%q7=#_$0cnzh5b&7efw(pkk9%v^^gj(g9shq9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['gamersheaven.onrender.com']
+ALLOWED_HOSTS = []
 
 
 
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'venta',
     'django.contrib.humanize',
-    
 ]
 
 MIDDLEWARE = [
@@ -60,6 +59,8 @@ MIDDLEWARE = [
     
 ]
 LOGIN_REDIRECT_URL = 'agregar_productos'
+
+LOGOUT_REDIRECT_URL = 'login'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
